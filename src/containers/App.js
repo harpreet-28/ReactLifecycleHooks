@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import classes from './App.css';
-import Person from '../components/Persons/Person/Person.js';
-import UserInput from '../components/User/UserInput.js';
-import UserOutput from '../components/User/UserOutput.js';
-import ValidationInput from '../components/validation/ValidationInput.js';
-import ValidationOutput from '../components/validation/ValidationOutput.js';
+// import Person from '../components/Persons/Person/Person.js';
 import Char from '../components/Char/Char';
 import Persons from '../components/Persons/Persons.js';
 import Cockpit from '../components/Cockpit/Cockpit';
-
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary.js';
 
 class App extends Component {
   state = {
@@ -54,14 +48,7 @@ class App extends Component {
     this.setState({persons:persons})
   }
 
-  usernameChangedHandler=(e)=>{
-    this.setState({
-      user: [
-        {username: e.target.value},
-        {username: 'Jazz'}
-      ]
-    })
-  }
+
   deletePersonHandler=(personIndex)=>{
     // const persons = this.state.persons.slice();
     const persons = [...this.state.persons]
@@ -74,20 +61,6 @@ class App extends Component {
     const doesShow = this.state.showPersons;
     this.setState({showPersons: !doesShow})
   }
-
-//handler created to display the value of input text entered!!
-  inputLengthHandler = (evt) => {
-   const inputVal = evt.target.value;
-   this.setState({inputLength:inputVal})
-  }
-
-
-//handler created to display the length of the value entered from ValidationInput.
-  ValidatedLengthHandler=(e)=>{
-    const updateValidatedText = e.target.value.length;
-    this.setState({validatedText: updateValidatedText})
-  }
-
 
   //handler created to enter the value for Char List.
   charInputHandler = (event) => {
@@ -150,27 +123,9 @@ class App extends Component {
         persons={this.state.persons} 
         clicked={this.togglePersonHandler}/>
         {persons}
-
-        <hr />
-        <UserInput username={this.usernameChangedHandler.bind(this)}/>
-        <UserOutput 
-        style={outputStyle}
-        username1={this.state.user[0].username} 
-        username2={this.state.user[1].username}/>
-        <hr />
-        <div>
-        <input type="text" placeholder="Exercise 2"  onChange={this.inputLengthHandler.bind(this)} />
-        <p>Input Text:: {this.state.inputLength}</p>
-        </div>
-        <hr />
-
-        <ValidationInput displayText={this.ValidatedLengthHandler.bind(this)}/>
-        <ValidationOutput displayTextLength={this.state.validatedText} />
-
         <hr />
         <input type="text" placeholder="Exercise 4" onChange={this.charInputHandler.bind(this)} />
-        {charList}
-       
+        {charList}       
       </div>
     
     );
