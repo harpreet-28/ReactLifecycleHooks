@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import Person from './Person/Person.js';
 
 
 
-export default class Persons extends Component{
+export default class Persons extends PureComponent{
 	constructor(props) {
 		console.log('[Persons.js] inside constructor()', props)
         super(props)
@@ -20,12 +20,13 @@ export default class Persons extends Component{
     	console.log('[UPDATE Persons.js] inside componentWillReceiveProps()', nextProps)
 
     }
-    shouldComponentUpdate(nextProps, nextState){
-    	console.log('[UPDATE Persons.js] inside shouldComponentUpdate()', nextProps, nextState)
+    // shouldComponentUpdate(nextProps, nextState){
+    // 	console.log('[UPDATE Persons.js] inside shouldComponentUpdate()', nextProps, nextState)
     	
-    	//below is immutable approach for updation rather than returning either true or false.
-    	return nextProps.persons !== this.props.persons;
-    }
+    // 	//below is immutable approach for updation rather than returning either true or false.
+    // 	// return nextProps.persons !== this.props.persons;
+    //     return true; 
+    // }
     componentWillUpdate(nextProps, nextState){
     	console.log('[UPDATE Persons.js] inside componentWillUpdate()', nextProps, nextState)
 

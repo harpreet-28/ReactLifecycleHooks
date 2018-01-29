@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
-class App extends Component {
+class App extends PureComponent {
     constructor(props) {
         super(props)
         console.log('constructor() executing in App.js file', props)
@@ -27,12 +27,12 @@ class App extends Component {
           console.log('componentDidMount() executing in App.js file')
 
     }
-    shouldComponentUpdate(nextProps, nextState){
-        console.log('[UPDATE App.js] inside shouldComponentUpdate()', nextProps, nextState)
+    // shouldComponentUpdate(nextProps, nextState){
+    //     console.log('[UPDATE App.js] inside shouldComponentUpdate()', nextProps, nextState)
         
-        //below is immutable approach for updation rather than returning either true or false.
-        return true;
-    }
+    //     //below is immutable approach for updation rather than returning either true or false.
+    //     return true;
+    // }
     componentWillUpdate(nextProps, nextState){
         console.log('[UPDATE App.js] inside componentWillUpdate()', nextProps, nextState)
 
